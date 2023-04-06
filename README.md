@@ -5,28 +5,27 @@ This is a CRM (Customer Relationship Management) web application that allows use
 
 
 Features:
-User registration and login.
-Secure authentication and authorization system.
+-> User registration and login.
+-> Secure authentication and authorization system.
 
 
 Getting Started
 To get started with this application, follow these steps:
 
-Clone this repository to your local machine.
-Navigate to the project directory.
-Install the dependencies using the command npm install.
-Start the server using the command npm start.
+-> Clone this repository to your local machine.
+-> Navigate to the project directory.
+-> Install the dependencies using the command npm install.
+-> Start the server using the command npm start.
 
 
-Usage:
-To use this application, follow these steps:
+Usage:To use this application, follow these steps:
 
-Open your web browser and navigate to http://localhost:3000.
+-> Open your web browser and navigate to http://localhost:3000.
 
 
 Technologies Used
 This application was built using the following technologies:
 
-Node.js
-Express.js
-MongoDB
+-> Node.js
+-> Express.js
+-> MongoDB
