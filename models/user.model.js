@@ -23,7 +23,7 @@ const userSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    immutable: true,
+    immutable: false,
     default: new Date().toString(),
   },
 
@@ -41,13 +41,26 @@ const userSchema = new Schema({
     type: String,
     required: true,
     default: "approved",
+    enum: ["block", "unapproved", "approved", "suspended"],
   },
 });
 const Salt = process.env.SALT;
-console.log(Salt);
 userSchema.pre("save", function (next) {
-  const hashedPassword = bcrypt.hashSync(this.password, +Salt);
-  this.password = hashedPassword;
+  try {
+    const hashedPassword = bcrypt.hashSync(this.password, +Salt);
+    this.password = hashedPassword;
+    next();
+  } catch (err) {
+    return next(err);
+  }
+});
+userSchema.pre("findOneAndUpdate", async function (next) {
+  const update = this.getUpdate();
+  if (!update.password) {
+    return next();
+  }
+  const hashedPassword = bcrypt.hashSync(update.password, +Salt);
+  update.password = hashedPassword;
   next();
 });
 
